@@ -61,16 +61,16 @@ Bytes , OpenSSL-HMAC , HMAC , KHC1 , KHC2
 'crprf' is the executable file that runs HMAC of OpenSSL, custom HMAC, KHC1, and KHC2, measures their execution time, and displays them in CSV format. Options of 'cprf' are shown below.
 
 ```batch
-Usage: ./crprf [OPTIONS]
+Usage: ./crprf [options]
 --help  print this help
---maxMessageByteLength=L  messages from 0 to L bytes (default: 256)
---repeatCount=N  repeat (odd) N times for obtain the median  (default: 129)
+--maxMessageByteLength=L  message length from 0 to L bytes (default: 256)
+--repeatCount=N  repeat (odd) N times for obtaining the median  (default: 129)
 --stepByte=S  increase the message length by S bytes each (default: 32)
 ```
 
 'crprf_moc' is also an executable file that displays the execution time when the essential processing of the SHA-256 compression function is omitted. 
 Usage of crcprf_moc is the same as that of crprf.
-By subtracting the latter from the former, the time required to execute the SHA-256 compression function can be calculated.
+By subtracting the latter from the former, the time required to execute the SHA-256 compression function can be estimated.
 
 
 # Note
