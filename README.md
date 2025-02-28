@@ -5,7 +5,8 @@ We implemented benchmark software for two algorithms (KHC1 and KHC2) proposed in
 S. Hirose and H. Kuwakado,
 "Collision-Resistant and Pseudorandom Hashing Modes of Compression Functions,"
 Proceedings of 2025 Symposium on Cryptography and Information Security (SCIS2025),
-2B4-2, 2025.
+2B4-2, 2025.  
+[https://www.iwsec.org/scis/2025/program.html](https://www.iwsec.org/scis/2025/program.html)
 
 # Features
 
