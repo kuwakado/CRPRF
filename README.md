@@ -1,4 +1,3 @@
-// https://cpp-learning.com/readme/
 # Collision-Resistant and Pseudorandom Hashing Modes
 
 We implemented benchmark software for two algorithms (KHC1 and KHC2) proposed in the following paper.
