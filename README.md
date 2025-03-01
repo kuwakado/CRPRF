@@ -28,11 +28,10 @@ CPU: AMD Ryzen 9 9950X, Intel Core i9-12900K, AMD Ryzen 9 5950X
 
 ```shell-session
 $ git clone https://github.com/hoge/~
-$ cd crprf
+$ cd CRPRF
 $ make all 
-$ make check (optional)
 ```
-As a result, two executable files, 'crprf' and 'crprf_moc', are produced.
+As a result, two executable files, 'crprf' and 'crprf_moc', are produced in the current directory.
 
 # Usage
 
