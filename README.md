@@ -110,5 +110,7 @@ Shoichi Hirose gave me advice about the programs.
 
 [MIT license](https://opensource.org/license/mit)
 
+Copyright 2025  Hidenori Kuwakado
+
 
 
