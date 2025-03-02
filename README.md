@@ -71,7 +71,7 @@ Usage: ./crprf [options]
 
 'crprf_moc' is also an executable file that displays the execution time when the processing of HMAC, that of KHC1, and that of KHC2 are omitted. 
 Note that the processing of OpenSSL HMAC is not omitted.
-Subtracting the result of 'crprf_moc' from the result of 'crprf' gives the precise execution times of HMAC, KHC1, and KHC2 (i.e., excluding the time for option processing and measurement).
+Subtracting the result of 'crprf_moc' from the result of 'crprf' gives the precise execution times of HMAC, KHC1, and KHC2 (i.e., excluding the time for measurement).
 Usage of 'crcprf_moc' is the same as that of 'crprf'.
 
 ```shell-session
