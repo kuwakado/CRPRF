@@ -46,15 +46,15 @@ For example, the result is displayed to the standard out as follows:
 
 ```batch
 Bytes , OpenSSL-HMAC , HMAC , KHC1 , KHC2
-0 , 3900 , 420 , 160 , 260
-32 , 3860 , 420 , 160 , 260
-64 , 3500 , 500 , 240 , 240
-96 , 3500 , 500 , 240 , 240
-128 , 3360 , 580 , 340 , 220
-160 , 3340 , 580 , 340 , 340
-192 , 3420 , 680 , 440 , 320
-224 , 3420 , 680 , 420 , 420
-256 , 3520 , 760 , 520 , 420
+0 , 4960 , 460 , 200 , 300
+32 , 4760 , 480 , 220 , 300
+64 , 4840 , 560 , 280 , 300
+96 , 4860 , 560 , 280 , 300
+128 , 4900 , 640 , 380 , 260
+160 , 4860 , 660 , 380 , 380
+192 , 5020 , 740 , 460 , 360
+224 , 5000 , 740 , 460 , 480
+256 , 5040 , 820 , 560 , 440
 ```
 
 'crprf' is the executable file that runs HMAC of OpenSSL, custom HMAC, KHC1, and KHC2, measures their execution time, and displays them in CSV format. Options of 'cprf' are shown below.
@@ -67,9 +67,9 @@ Usage: ./crprf [options]
 --stepByte=S  increase the message length by S bytes each (default: 32)
 ```
 
-'crprf_moc' is also an executable file that displays the execution time when the essential processing of the SHA-256 compression function is omitted. 
+'crprf_moc' is also an executable file that displays the execution time when the processing of HMAC, that of KHC1, and that of KHC2 are omitted. 
 Usage of crcprf_moc is the same as that of crprf.
-By subtracting the latter from the former, the time required to execute the SHA-256 compression function can be estimated.
+By subtracting the result of 'crprf_moc' from the result of 'crprf', we can estimate the execution time of HMAC, KHC1, and KHC2 (excluding overhead times for option processing and measurements).
 
 
 # Note
