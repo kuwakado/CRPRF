@@ -27,10 +27,11 @@ CPU: AMD Ryzen 9 9950X, Intel Core i9-12900K, AMD Ryzen 9 5950X
 # Installation
 
 ```shell-session
-$ git clone https://github.com/hoge/~
+$ git clone https://github.com/kuwakado/CRPRF.git
 $ cd CRPRF
 $ make all 
 ```
+When you run "make all", you'll get a lot of warnings, but that's ok.
 As a result, two executable files, 'crprf' and 'crprf_moc', are produced in the current directory.
 
 # Usage
