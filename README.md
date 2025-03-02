@@ -16,9 +16,10 @@ Theoretically, the execution time of HMAC, KHC1, and KHC2 is roughly proportiona
 SHA-256 was used for the compression function and the SHA instruction (SHA-NI) was used to implement the SHA-256 compression function. Therefore, the length of a key is fixed at 256 bits. Although KHC1 and KHC2 can be applied to messages of arbitrary bit length, this implementation assumes that the message is an arbitrary sequence of bytes. This is because it is realistic to assume a byte sequence, and furthermore, it simplifies the padding process.
 
 
-# Requirement
+# Requirement (Development environment)
 
-OS: Ubuntu 24.04.2 LTS x86_64  
+Distribution: Ubuntu 24.04.2 LTS x86_64  
+OS: Linux 6.8.0
 Compiler: gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0  
 Library: openssl (3.0.13-0ubuntu3.5)  
 CPU: AMD Ryzen 9 9950X, Intel Core i9-12900K, AMD Ryzen 9 5950X
