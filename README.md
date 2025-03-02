@@ -101,7 +101,9 @@ This package does not provide any executable files that allow users to give keys
 
 # Authors
 
-Hidenori Kuwakado and Shoichi Hirose
+Hidenori Kuwakado
+
+Shoichi Hirose gave me advice about the programs.
 
 
 # License
