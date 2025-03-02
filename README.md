@@ -39,7 +39,7 @@ As a result, two executable files, 'crprf' and 'crprf_moc', are produced in the 
 To measure the execution time of HMAC of OpenSSL, HMAC, KHC1, and KHC2 for a randomly chosen 256-bit (32-byte) key and message ranging from 0 to 256 bytes in 32-byte increments, type:
 
 ```shell-session
-$ ./crpf --maxByteLength=256 --repeatCount=129 --stepByte=32
+$ ./crprf --maxByteLength=256 --repeatCount=129 --stepByte=32
 ```
 
 In this example, each function was executed 129 times and the execution time was estimated. The execution time shown is the median of the execution time of 129 executions, and the unit is cycles.
@@ -69,8 +69,28 @@ Usage: ./crprf [options]
 ```
 
 'crprf_moc' is also an executable file that displays the execution time when the processing of HMAC, that of KHC1, and that of KHC2 are omitted. 
+Note that the processing of OpenSSL HMAC is not omitted.
+Subtracting the result of 'crprf_moc' from the result of 'crprf' gives the precise execution times of HMAC, KHC1, and KHC2 (i.e., excluding the time for option processing and measurement).
 Usage of crcprf_moc is the same as that of crprf.
-By subtracting the result of 'crprf_moc' from the result of 'crprf', we can estimate the execution time of HMAC, KHC1, and KHC2 (excluding overhead times for option processing and measurements).
+
+```shell-session
+$ ./crprf_moc --maxByteLength=256 --repeatCount=129 --stepByte=32
+```
+The result of the above command might look something like this:
+
+```batch
+Bytes , OpenSSL-HMAC , HMAC , KHC1 , KHC2
+0 , 4740 , 80 , 80 , 80
+32 , 4760 , 80 , 80 , 80
+64 , 4840 , 80 , 80 , 80
+96 , 4800 , 80 , 80 , 80
+128 , 4860 , 80 , 80 , 80
+160 , 4960 , 80 , 80 , 80
+192 , 5020 , 80 , 80 , 80
+224 , 4960 , 80 , 80 , 80
+256 , 5020 , 80 , 80 , 80
+```
+
 
 
 # Note
