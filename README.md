@@ -1,6 +1,6 @@
 # Collision-Resistant and Pseudorandom Hashing Modes
 
-We implemented benchmark software for comparing HMAC with two algorithms (KHC1 and KHC2) proposed in the following paper.
+This repository provides benchmark software for comparing HMAC with two algorithms (KHC1 and KHC2) proposed in the following paper.
 
 S. Hirose and H. Kuwakado,
 "Collision-Resistant and Pseudorandom Hashing Modes of Compression Functions,"
