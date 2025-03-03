@@ -134,7 +134,7 @@ This package does not provide any executable files that allow users to give keys
 
 Hidenori Kuwakado
 
-Shoichi Hirose gave me advice about the programs.
+Shoichi Hirose gave me advice about algorithms for implementation.
 
 
 # License
