@@ -33,7 +33,7 @@ $ cd CRPRF
 $ make all 
 ```
 When you run "make all", you'll get a lot of warnings, but that's ok.
-As a result, three executable files, 'crprf', 'crprf_moc', and 'crprf_moc_sha256cf' are produced in the current directory.
+As a result, three executable files, 'crprf', 'crprf_moc', and 'crprf_moc_sha256cf', are produced in the current directory.
 
 # Usage
 
@@ -48,15 +48,15 @@ For example, the result is displayed to the standard out as follows:
 
 ```batch
 Bytes , OpenSSL-HMAC , HMAC , KHC1 , KHC2
-0 , 4960 , 460 , 200 , 300
-32 , 4760 , 480 , 220 , 300
-64 , 4840 , 560 , 280 , 300
-96 , 4860 , 560 , 280 , 300
-128 , 4900 , 640 , 380 , 260
-160 , 4860 , 660 , 380 , 380
-192 , 5020 , 740 , 460 , 360
-224 , 5000 , 740 , 460 , 480
-256 , 5040 , 820 , 560 , 440
+0 , 3740 , 440 , 200 , 280
+32 , 3360 , 440 , 180 , 280
+64 , 3420 , 520 , 280 , 280
+96 , 3380 , 520 , 280 , 260
+128 , 3180 , 620 , 380 , 260
+160 , 3180 , 620 , 360 , 360
+192 , 3220 , 700 , 460 , 360
+224 , 3200 , 700 , 460 , 460
+256 , 3320 , 800 , 560 , 440
 ```
 
 'crprf' is the executable file that runs HMAC of OpenSSL, custom HMAC, KHC1, and KHC2, measures their execution time, and displays them in CSV format. Options of 'cprf' are shown below.
@@ -81,15 +81,15 @@ The result of the above command might look something like this:
 
 ```batch
 Bytes , OpenSSL-HMAC , HMAC , KHC1 , KHC2
-0 , 4740 , 80 , 80 , 80
-32 , 4760 , 80 , 80 , 80
-64 , 4840 , 80 , 80 , 80
-96 , 4800 , 80 , 80 , 80
-128 , 4860 , 80 , 80 , 80
-160 , 4960 , 80 , 80 , 80
-192 , 5020 , 80 , 80 , 80
-224 , 4960 , 80 , 80 , 80
-256 , 5020 , 80 , 80 , 80
+0 , 3660 , 80 , 80 , 80
+32 , 3280 , 80 , 80 , 80
+64 , 3340 , 80 , 80 , 80
+96 , 3360 , 80 , 80 , 80
+128 , 3120 , 80 , 80 , 80
+160 , 3120 , 80 , 80 , 80
+192 , 3180 , 80 , 80 , 80
+224 , 3120 , 80 , 80 , 80
+256 , 3200 , 80 , 80 , 80
 ```
 
 Finally, 'crprf_moc_sha256cf' is an executable file that displays the execution time of HMAC, that of KHC1, and that of KHC2 excluding that of the SHA-256 compression function.
@@ -108,19 +108,20 @@ In other words, nothing has changed from the original OpenSSL HMAC.
 
 ```batch
 Bytes , OpenSSL-HMAC , HMAC , KHC1 , KHC2
-0 , 34220 , 240 , 100 , 120
-32 , 32280 , 240 , 120 , 120
-64 , 18900 , 240 , 120 , 120
-96 , 14420 , 260 , 120 , 120
-128 , 15280 , 240 , 120 , 100
-160 , 14740 , 240 , 120 , 120
-192 , 15620 , 240 , 120 , 100
-224 , 18840 , 260 , 140 , 140
-256 , 33460 , 260 , 120 , 120
+0 , 3420 , 160 , 100 , 100
+32 , 3360 , 140 , 100 , 100
+64 , 3380 , 140 , 100 , 100
+96 , 3380 , 140 , 100 , 100
+128 , 3080 , 140 , 100 , 100
+160 , 3060 , 160 , 100 , 100
+192 , 3160 , 160 , 100 , 100
+224 , 4800 , 220 , 120 , 120
+256 , 3220 , 160 , 100 , 100
 ```
 
-In the three exmples above, the excutable file of OpenSSL HMAC is identical.
-Even if the given parameters are the same, their execution time may not be the same.
+In the three exmples above, the code of OpenSSL HMAC is identical.
+However, the execution times are all different even if the message length is the same.
+For example, when the message length is zero, they are 3740  [clocks], 3660 [clocks], and 3420 [clocks], respectively.
 In my experience, the median execution times for Open SSL HMAC, as well as others, do not stabilize until after a significant number of iterations (--repeatCount option).
 
 
