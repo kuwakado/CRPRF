@@ -92,8 +92,8 @@ Bytes , OpenSSL-HMAC , HMAC , KHC1 , KHC2
 256 , 5020 , 80 , 80 , 80
 ```
 
-Finally, 'crprf_moc_sha256' is an executable file that displays the execution time of HMAC, that of KHC1, and that of KHC2 excluding that of the SHA-256 compression function.
-That is, the displayed time includes the time for padding and that for XORing constants.
+Finally, 'crprf_moc_sha256cf' is an executable file that displays the execution time of HMAC, that of KHC1, and that of KHC2 excluding that of the SHA-256 compression function.
+That is, the displayed time is approximately the sum of the time for padding and that for XORing constants.
 Subtracting the result of 'crprf_moc_sha256cf' from the result of 'crprf' gives the precise times for spending the calculation of the compression funcion in HMAC, KHC1, and KHC2.
 Usage of 'crcprf_moc_sha256cf' is the same as that of 'crprf'.
 For example, type:
@@ -121,7 +121,8 @@ Bytes , OpenSSL-HMAC , HMAC , KHC1 , KHC2
 
 In the three exmples above, the excutable file of OpenSSL HMAC is identical.
 Even if the given parameters are the same, their execution time may not be the same.
-In my experience, the median running times not only Open SSL HMAC but also others do not stabilize until a significant number of iterations (--repeatCount option) have been run.
+In my experience, the median execution times for Open SSL HMAC, as well as others, do not stabilize until after a significant number of iterations (--repeatCount option).
+
 
 # Note
 
