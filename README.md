@@ -37,13 +37,14 @@ As a result, three executable files, 'crprf', 'crprf_moc', and 'crprf_moc_sha256
 
 # Usage
 
-To measure the execution time of HMAC of OpenSSL, HMAC, KHC1, and KHC2 for a randomly chosen 256-bit (32-byte) key and message ranging from 0 to 256 bytes in 32-byte increments, type:
+To measure the execution time of HMAC of OpenSSL, HMAC, KHC1, and KHC2 for a randomly chosen 256-bit (32-byte) key and a message ranging from 0 to 256 bytes in 32-byte increments, type:
 
 ```shell-session
 $ ./crprf --maxMessageByteLength=256 --repeatCount=129 --stepByte=32
 ```
 
-In this example, each function was executed 129 times and the execution time was estimated. The execution time shown is the median of the execution time of 129 executions, and the unit is cycles.
+In this example, each function was executed 129 times and the execution time was estimated.
+The execution time shown is the median of the execution time of 129 executions, and the unit is clocks.
 For example, the result is displayed to the standard out as follows:
 
 ```batch
@@ -127,7 +128,8 @@ In my experience, the median execution times for Open SSL HMAC, as well as other
 
 # Note
 
-This package does not provide any executable files that allow users to give keys and messages and calculate tags. That is, it does not provide an executable file such as 'sha256sum' command.
+This package does not provide any executable files that allow users to give keys and messages and calculate tags.
+That is, it does not provide an executable file such as 'sha256sum' command.
 
 
 # Authors
