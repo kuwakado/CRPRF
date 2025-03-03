@@ -19,7 +19,7 @@ SHA-256 was used for the compression function and the SHA instruction (SHA-NI) w
 # Requirement (Development environment)
 
 Distribution: Ubuntu 24.04.2 LTS x86_64  
-OS: Linux 6.8.0
+OS: Linux 6.8.0 
 Compiler: gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0  
 Library: openssl (3.0.13-0ubuntu3.5)  
 CPU: AMD Ryzen 9 9950X, Intel Core i9-12900K, AMD Ryzen 9 5950X, AMD EPYC-Milan
