@@ -33,14 +33,14 @@ $ cd CRPRF
 $ make all 
 ```
 When you run "make all", you'll get a lot of warnings, but that's ok.
-As a result, two executable files, 'crprf' and 'crprf_moc', are produced in the current directory.
+As a result, three executable files, 'crprf', 'crprf_moc', and 'crprf_moc_sha256cf' are produced in the current directory.
 
 # Usage
 
 To measure the execution time of HMAC of OpenSSL, HMAC, KHC1, and KHC2 for a randomly chosen 256-bit (32-byte) key and message ranging from 0 to 256 bytes in 32-byte increments, type:
 
 ```shell-session
-$ ./crprf --maxByteLength=256 --repeatCount=129 --stepByte=32
+$ ./crprf --maxMessageByteLength=256 --repeatCount=129 --stepByte=32
 ```
 
 In this example, each function was executed 129 times and the execution time was estimated. The execution time shown is the median of the execution time of 129 executions, and the unit is cycles.
@@ -75,7 +75,7 @@ Subtracting the result of 'crprf_moc' from the result of 'crprf' gives the preci
 Usage of 'crcprf_moc' is the same as that of 'crprf'.
 
 ```shell-session
-$ ./crprf_moc --maxByteLength=256 --repeatCount=129 --stepByte=32
+$ ./crprf_moc --maxMessageByteLength=256 --repeatCount=129 --stepByte=32
 ```
 The result of the above command might look something like this:
 
@@ -92,7 +92,36 @@ Bytes , OpenSSL-HMAC , HMAC , KHC1 , KHC2
 256 , 5020 , 80 , 80 , 80
 ```
 
+Finally, 'crprf_moc_sha256' is an executable file that displays the execution time of HMAC, that of KHC1, and that of KHC2 excluding that of the SHA-256 compression function.
+That is, the displayed time includes the time for padding and that for XORing constants.
+Subtracting the result of 'crprf_moc_sha256cf' from the result of 'crprf' gives the precise times for spending the calculation of the compression funcion in HMAC, KHC1, and KHC2.
+Usage of 'crcprf_moc_sha256cf' is the same as that of 'crprf'.
+For example, type:
 
+```shell-session
+./crprf_moc_sha256cf --maxMessageByteLength=256 --repeatCount=129 --stepByte=32
+```
+
+Then, the following results are displayed.
+Note that the time of OpenSSL HMAC includes the time of the compression function.
+In other words, nothing has changed from the original OpenSSL HMAC.
+
+```batch
+Bytes , OpenSSL-HMAC , HMAC , KHC1 , KHC2
+0 , 34220 , 240 , 100 , 120
+32 , 32280 , 240 , 120 , 120
+64 , 18900 , 240 , 120 , 120
+96 , 14420 , 260 , 120 , 120
+128 , 15280 , 240 , 120 , 100
+160 , 14740 , 240 , 120 , 120
+192 , 15620 , 240 , 120 , 100
+224 , 18840 , 260 , 140 , 140
+256 , 33460 , 260 , 120 , 120
+```
+
+In the three exmples above, the excutable file of OpenSSL HMAC is identical.
+Even if the given parameters are the same, their execution time may not be the same.
+In my experience, the median running times not only Open SSL HMAC but also others do not stabilize until a significant number of iterations (--repeatCount option) have been run.
 
 # Note
 
