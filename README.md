@@ -121,7 +121,7 @@ Bytes , OpenSSL-HMAC , HMAC , KHC1 , KHC2
 ```
 
 In the three exmples above, the code of OpenSSL HMAC is identical.
-However, the execution times are all different even if the message length is the same.
+However, their execution times are different even if the message length is the same.
 For example, when the message length is zero, they are 3740  [clocks], 3660 [clocks], and 3420 [clocks], respectively.
 In my experience, the median execution times for Open SSL HMAC, as well as others, do not stabilize until after a significant number of iterations (--repeatCount option).
 
