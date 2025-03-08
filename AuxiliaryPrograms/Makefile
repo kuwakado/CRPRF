@@ -1,22 +1,26 @@
 CC=/usr/bin/gcc
-CFLAGS=-std=c17 -pedantic -pedantic-errors \
+CFLAGS=-pedantic -pedantic-errors \
 -Wall -Wextra -Werror=pedantic \
 -march=native \
 -O2
+#-DNDEBUG
 
-sources=sizeof.c mmXor.c estimateFreq.c
+sources=sizeof.c mmXor.c coreTSC.c
 deps=Makefile
 targets=$(subst .c,,$(sources))
 
 all: $(targets)
 
+sizeof: sizeof.c $(deps)
+	$(CC) $< -o $@ -std=c17 $(CFLAGS)
+mmXor: mmXor.c $(deps)
+	$(CC) $< -o $@ -std=c17 $(CFLAGS)
+coreTSC: coreTSC.c $(deps)
+	$(CC) $< -o $@ -std=c99 $(CFLAGS) -lpthread
+
 .PHONY: clean
 clean:
 	-$(RM) $(targets) .*.touch
-
-
-%: %.c $(deps)
-	$(CC) $< -o $@ $(CFLAGS)
 
 
 ###
@@ -27,6 +31,7 @@ indentOptions=--k-and-r-style \
 -T __m256i \
 -T bool \
 -T Sha256Context \
+-T thread_args_t \
 -T uint16_t \
 -T uint32_t \
 -T uint64_t \
@@ -57,24 +62,6 @@ trim: .trim.touch
 	| $(xargs) $(xargsOptions) \
 	$(sed) $(sedOptions) 's/\s*$$//' $(targetFile)
 	@$(touch) $@
-
-###
-# gcc -E -v -
-iwyu=/usr/bin/iwyu
-.PHONY: include
-include: .include.touch
-.include.touch: $(sources)
-	$(echo) -n $? \
-	| $(xargs) $(xargsOptions) \
-	$(iwyu) \
-	-I/usr/lib/gcc/x86_64-linux-gnu/11/include \
-	-I/usr/local/include \
-	-I/usr/include/x86_64-linux-gnu \
-	-I/usr/include \
-	$(targetFile)
-
-
-
 
 # end of file
 
