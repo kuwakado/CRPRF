@@ -54,6 +54,9 @@ void Sha256CompressionFunction(Sha256Context *const c)
     __m128i *const wmm = (__m128i *const) (c->remMessage);
 #if 1
     // Convert little endian to big endian. (x86_64 CPU: little endian)
+    // According to Section 3.1 in FIPS PUB 180, the big-endian convention is
+    // used when expressing a 32-bit word.
+    // https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf
     const __m128i toBig =
         _mm_set_epi8(12, 13, 14, 15, 8, 9, 10, 11, 4, 5, 6, 7, 0, 1, 2, 3);
     // wmm0 = w3 | w2 | w1 | w0
